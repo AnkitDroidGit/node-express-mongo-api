@@ -1,0 +1,221 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Node API",
+    "description": "Node API is developed as test"
+  },
+  "host": "",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "description": "Users registeration",
+        "parameters": [
+          {
+            "name": "request body",
+            "in": "body",
+            "required": false,
+            "description": "Request params in body",
+            "schema": {
+              "$ref": "#/definitions/RegisterUserRequestBody"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Result message",
+                  "example": "User Created successfully"
+                },
+                "payload": {
+                  "type": "object",
+                  "description": "User details",
+                  "example": {
+                    "_id": "5f69f3be03c8724357186d82",
+                    "name": "Test User 1",
+                    "email": "test1@gmail.com",
+                    "password": "$2b$10$dNuRqY21ZaH1a2dlmBuTXeTM0gAk6KGhWLwIKRuBxTP371HnQ3Yc2"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "description": "Users login",
+        "parameters": [
+          {
+            "name": "request body",
+            "in": "body",
+            "required": false,
+            "description": "Request params in body",
+            "schema": {
+              "$ref": "#/definitions/LoginUserRequestBody"
+            }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Result message",
+                  "example": "User information fetched"
+                },
+                "payload": {
+                  "type": "object",
+                  "description": "User details",
+                  "example": {
+                    "_id": "5f69f3be03c8724357186d82",
+                    "name": "Test User 1",
+                    "email": "test1@gmail.com",
+                    "password": "$2b$10$dNuRqY21ZaH1a2dlmBuTXeTM0gAk6KGhWLwIKRuBxTP371HnQ3Yc2"
+                  }
+                },
+                "accessToken": {
+                  "type": "string",
+                  "description": "acess token",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjllNTEyNzVlOWY1MmY2MjNhNzhlMSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsImlhdCI6MTYwMDc3ODU3NiwiZXhwIjoxNjAwNzc5NDc2fQ.MrkbtrlY8gBcXSZgdu3lqgV_q-VZniylrP_J4EUe6wQ"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/search": {
+      "get": {
+        "description": "Users search",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "description": "Request params",
+            "example": "Ankit"
+          },
+          {
+            "in": "header",
+            "name": "x-access-token",
+            "type": "string",
+            "required": true,
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjllNTEyNzVlOWY1MmY2MjNhNzhlMSIsImVtYWlsIjoiYWJjQGdtYWlsLmNvbSIsImlhdCI6MTYwMDc4MzMzOCwiZXhwIjoxNjAwNzkyMzM4fQ.Fo2kKBUnAAcDm3sgp-M2zwtseQCuJqObQNpOcA6iag0"
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "description": "Result message",
+                  "example": "null"
+                },
+                "payload": {
+                  "type": "array",
+                  "description": "User details",
+                  "example": [
+                    {
+                      "_id": "5f69f3be03c8724357186d82",
+                      "name": "Test User 1",
+                      "email": "test1@gmail.com",
+                      "password": "$2b$10$dNuRqY21ZaH1a2dlmBuTXeTM0gAk6KGhWLwIKRuBxTP371HnQ3Yc2"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "user unique key",
+          "example": "5f69f3be03c8724357186d82"
+        },
+        "name": {
+          "type": "string",
+          "description": "user's fullname",
+          "example": "Ankit Kumar"
+        },
+        "email": {
+          "type": "string",
+          "description": "user's email",
+          "example": "test@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "hashed password",
+          "example": "$2b$10$dNuRqY21ZaH1a2dlmBuTXeTM0gAk6KGhWLwIKRuBxTP371HnQ3Yc2"
+        }
+      }
+    },
+    "RegisterUserRequestBody": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "User's fullname",
+          "example": "Ankit Kumar"
+        },
+        "email": {
+          "type": "string",
+          "description": "A valid email address",
+          "example": "ankit@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "A valid password",
+          "example": "Testtest@123"
+        }
+      }
+    },
+    "LoginUserRequestBody": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "A valid email address",
+          "example": "ankit@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "description": "A valid password",
+          "example": "Testtest@123"
+        }
+      }
+    }
+  }
+}
