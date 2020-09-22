@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel --presets es2015 -d lib/ src",
+    "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
   "author": "",
