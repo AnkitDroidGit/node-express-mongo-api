@@ -79,24 +79,6 @@ exports.userLogin = (req, res) => {
   });
 };
 
-exports.getall = (req, res) => {
-  User.find().exec((err, users) => {
-    if (err) {
-      res.send(response.sendresponse(err, null));
-      return;
-    } else {
-      User.count().exec((err, count) => {
-        if (err) {
-          res.send(response.sendresponse(err, null));
-          return;
-        } else {
-          res.send(response.sendresponse(err, users));
-        }
-      });
-    }
-  });
-};
-
 exports.searchUsers = (req, res) => {
   User.find().exec((err, users) => {
     if (err) {
@@ -108,17 +90,34 @@ exports.searchUsers = (req, res) => {
           res.send(response.sendresponse(err, null));
           return;
         } else {
-          console.log(`Query 1 ${req.query.search}`);
           let searchString = req.query.search;
-          User.find({ name: { $regex: ".*" + `${searchString}` + ".*" } }).exec(
-            (err, result) => {
+          if (searchString === "") {
+            User.find().exec((err, users) => {
+              if (err) {
+                res.send(response.sendresponse(err, null));
+                return;
+              } else {
+                User.count().exec((err, count) => {
+                  if (err) {
+                    res.send(response.sendresponse(err, null));
+                    return;
+                  } else {
+                    res.send(response.sendresponse(err, users));
+                  }
+                });
+              }
+            });
+          } else {
+            User.find({
+              name: { $regex: ".*" + `${searchString}` + ".*" },
+            }).exec((err, result) => {
               if (err) {
                 res.send(response.sendresponse(err, null));
                 return;
               }
               res.send(response.sendresponse(err, result));
-            }
-          );
+            });
+          }
         }
       });
     }

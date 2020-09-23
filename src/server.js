@@ -4,6 +4,7 @@ const config = require("./config/config");
 const user = require("./routes/user");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./config/swagger.json");
+const cors = require("cors");
 
 const app = express();
 
@@ -14,7 +15,7 @@ mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"));
-
+app.use("*", cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/users", user);
@@ -30,7 +31,7 @@ app.use(
   swaggerUi.setup()
 );
 
-const port = 1234;
+const port = process.env.PORT | 1234;
 app.listen(port, () => {
   console.log("Server is up and running on port numner " + port);
 });
