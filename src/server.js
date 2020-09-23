@@ -31,7 +31,8 @@ app.use(
   swaggerUi.setup()
 );
 
-const port = process.env.PORT | 1234;
+const PORT = process.env.PORT | "1234";
+app.set("port", PORT);
 app.listen(port, () => {
-  console.log("Server is up and running on port numner " + port);
+  console.log("Server is up and running on port numner " + PORT);
 });
