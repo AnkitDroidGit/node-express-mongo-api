@@ -160,7 +160,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/express-app/dev/1600864417688-2020-09-23T12:33:37.688Z/express-app.zip"
+                "S3Key": "serverless/express-app/dev/1600865266585-2020-09-23T12:47:46.585Z/express-app.zip"
               },
               "FunctionName": "express-app-dev-app",
               "Handler": "src/server.handler",
@@ -178,14 +178,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionmLpg4exyJcd2EklufeXAcmpG1oLEUVyY4Z43zeRbY": {
+          "AppLambdaVersionZtv0xjgjVFw3MFdAig4n0aFdxZEWVby1XPomwUin5HE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "0xyDnbitTt0h3VGuGFhTfJP8MPy3u1qVqZLq7VktESI="
+              "CodeSha256": "8+3y/2FeQGrnsuFNnzC7Fv4fk4AXp/srhg1vRPWarUo="
             }
           },
           "ApiGatewayRestApi": {
@@ -397,7 +397,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1600864411659": {
+          "ApiGatewayDeployment1600865261582": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -459,7 +459,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionmLpg4exyJcd2EklufeXAcmpG1oLEUVyY4Z43zeRbY"
+              "Ref": "AppLambdaVersionZtv0xjgjVFw3MFdAig4n0aFdxZEWVby1XPomwUin5HE"
             }
           },
           "ServiceEndpoint": {
@@ -623,7 +623,7 @@
         "timeout": 6,
         "runtime": "nodejs10.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionmLpg4exyJcd2EklufeXAcmpG1oLEUVyY4Z43zeRbY"
+        "versionLogicalId": "AppLambdaVersionZtv0xjgjVFw3MFdAig4n0aFdxZEWVby1XPomwUin5HE"
       }
     },
     "configValidationMode": "warn",
@@ -649,7 +649,7 @@
     "artifact": "/Users/ankit.kumar/No/XXX/DIGI/git/node-express-mongo-api/.serverless/express-app.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/express-app/dev/1600864417688-2020-09-23T12:33:37.688Z",
+    "artifactDirectoryName": "serverless/express-app/dev/1600865266585-2020-09-23T12:47:46.585Z",
     "artifact": "express-app.zip"
   }
 }
