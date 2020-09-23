@@ -6,7 +6,7 @@ var jwt = require("jsonwebtoken");
 //Verify if the user is authorized
 exports.verifyToken = (req, res, next) => {
   const token =
-    req.body.token || req.query.token || req.headers["x-access-token"];
+    req.body.token || req.query.token || req.headers["Authorization"];
   // decode token
   if (token) {
     // verifies secret and checks exp

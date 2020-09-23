@@ -109,7 +109,7 @@ exports.searchUsers = (req, res) => {
             });
           } else {
             User.find({
-              name: { $regex: ".*" + `${searchString}` + ".*" },
+              name: { $regex: ".*" + `${searchString}` + ".*", $options: "i" },
             }).exec((err, result) => {
               if (err) {
                 res.send(response.sendresponse(err, null));
