@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const config = require("./config/config");
@@ -10,7 +11,10 @@ const app = express();
 
 const mongoose = require("mongoose");
 const mongoDB = config.db;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOLAB_URI || mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
