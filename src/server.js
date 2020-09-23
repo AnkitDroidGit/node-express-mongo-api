@@ -33,6 +33,7 @@ app.use(
 
 const PORT = process.env.PORT | "1234";
 app.set("port", PORT);
-app.listen(() => {
-  console.log("Server is up and running on port numner " + PORT);
+const server = app.listen(() => {
+  const port = server.address().port;
+  console.log("Server is up and running on port numner " + port);
 });
