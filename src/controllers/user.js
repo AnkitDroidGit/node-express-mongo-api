@@ -11,7 +11,7 @@ const createToken = (user) => {
 
 //Simple version, without validation or sanitation
 exports.test = (req, res) => {
-  res.send(response.sendresponse("Welocome to user controller", null));
+  res.send(response.sendresponse("Welcome to user controller", null));
 };
 
 //Create a new user
@@ -39,7 +39,7 @@ exports.userCreate = (req, res) => {
         res.send(response.sendresponse(err, null));
         return;
       } else {
-        res.send(response.sendresponse("User Created successfully", result));
+        res.send(response.sendresponse("User created successfully", result));
       }
     });
   });
